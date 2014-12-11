@@ -29,7 +29,7 @@ var TennisGame6 = (function(){
 var Rules = function(players) {
 
     const winFromScore = 4;
-    const highTieLowBound = 3;
+    const highTieLowBound = 4;
 
     var getScoreName = function(score){
         var scoreNames = ["Love", "Fifteen", "Thirty", "Forty"];
