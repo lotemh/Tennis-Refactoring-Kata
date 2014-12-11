@@ -28,10 +28,11 @@ var TennisGame6 = (function(){
 
 var Rules = function(players) {
 
-    var highTie = 4;
+    const winFromScore = 4;
+    const highTieLowBound = 3;
 
     var getScoreName = function(score){
-        var scoreNames = ["Love", "Fifteen", "Thirty", "Forty", "Deuce"];
+        var scoreNames = ["Love", "Fifteen", "Thirty", "Forty"];
         return scoreNames[score];
     };
 
@@ -45,25 +46,33 @@ var Rules = function(players) {
     };
 
     var isHighTie = function () {
-        return isTie() && players[0].getScore() > 2;
+        return isTie() && players[0].getScore() >= highTieLowBound;
     };
 
     var getHighTieScore = function () {
-        return getScoreName(highTie);
+        return "Deuce";
     };
 
-    var isLowScore = function () {
-        return !isTie() && players.every(function (p) {
-            return p.getScore() < highTie
+    function isSomePlayerAboveWinningBound() {
+        return players.some(function (p) {
+            return p.getScore() >= winFromScore
         });
+    }
+
+    var isLowScore = function () {
+        return !isTie() && !isSomePlayerAboveWinningBound();
     };
 
     var getLowScore = function () {
         return getScoreName(players[0].getScore()) + "-" + getScoreName(players[1].getScore());
     };
 
+    function isWinningDifference() {
+        return (Math.abs(players[0].getScore() - players[1].getScore()) > 1);
+    }
+
     var isAdvantage = function () {
-        return !isLowScore() && (Math.abs(players[0].getScore() - players[1].getScore()) === 1);
+        return !isTie() && isSomePlayerAboveWinningBound() && !isWinningDifference();
     };
 
     var getAdvantageScore = function () {
@@ -81,7 +90,7 @@ var Rules = function(players) {
     };
 
     var isWinner = function () {
-        return !isLowScore() && (Math.abs(players[0].getScore() - players[1].getScore()) > 1);
+        return !isTie() && isSomePlayerAboveWinningBound() && isWinningDifference();
     };
 
     var rules = [new Rule(isHighTie, getHighTieScore),
