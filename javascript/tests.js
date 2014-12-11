@@ -8,7 +8,7 @@ describe("Tennis kata", function(){
         [0, 0, "Love-All"],
         [1, 1, "Fifteen-All"],
         [2, 2, "Thirty-All"],
-        [3, 3, "Deuce"],
+        [3, 3, "Forty-All"],
         [4, 4, "Deuce"],
 
         [1, 0, "Fifteen-Love"],
@@ -45,7 +45,7 @@ describe("Tennis kata", function(){
         [14, 16, "Win for player2"]
     ];
 
-    [TennisGame1, TennisGame2, TennisGame3, TennisGame4, TennisGame5].forEach(function(TennisGame, i){
+    [TennisGame1, TennisGame2, TennisGame3, TennisGame4, TennisGame5, TennisGame6].forEach(function(TennisGame, i){
         it("TennisGame" + (i+1) + ": get all scores", function(){
             allScores.forEach(function(score) {
                 var player1Score = score[0],

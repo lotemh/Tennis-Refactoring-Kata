@@ -15,7 +15,7 @@ var TennisGame5 = (function(){
     var Game = function(){};
 
     Game.prototype.wonPoint = function (playerName) {
-        getPlayerByName(playerName).addPoint();
+        getPlayerByName(playerName).addPoint(1);
     };
 
     Game.prototype.getScore = function getScore() {

@@ -2,7 +2,7 @@
  * Created by lotemh on 12/9/2014.
  * general implementation. data is separated from logic
  */
-var TennisGame4 = (function(){
+var TennisGame6 = (function(){
     var players, rules;
 
     var getPlayer = function(name){
@@ -125,5 +125,5 @@ Player.prototype.addPoint = function(points){
 };
 
 if (typeof window === "undefined") {
-    module.exports = TennisGame4;
+    module.exports = TennisGame6;
 }
