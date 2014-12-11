@@ -36,6 +36,11 @@ describe("Tennis kata", function(){
         [3, 4, "Advantage player2"],
         [5, 4, "Advantage player1"],
         [4, 5, "Advantage player2"],
+        [10, 10, "Sugar"],
+        [11, 11, "Sugar"],
+        [12, 12, "Sugar"],
+        [13, 13, "Sugar"],
+        [14, 14, "Deuce"],
         [15, 14, "Advantage player1"],
         [14, 15, "Advantage player2"],
 
