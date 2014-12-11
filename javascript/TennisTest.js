@@ -1,11 +1,11 @@
 if (typeof TennisGame1 === "undefined") {
-    var TennisGame1 = require("./TennisGame1.js");
+    var TennisGame1 = require("./TennisGame1Original.js");
 }
 if (typeof TennisGame2 === "undefined") {
-    var TennisGame2 = require("./TennisGame2.js");
+    var TennisGame2 = require("./TennisGame2Original.js");
 }
 if (typeof TennisGame3 === "undefined") {
-    var TennisGame3 = require("./TennisGame3.js");
+    var TennisGame3 = require("./TennisGame3Original.js");
 }
 
 var allScores = [

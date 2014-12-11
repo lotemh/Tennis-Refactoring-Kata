@@ -5,6 +5,7 @@ var TennisGame2 = function(player1Name, player2Name) {
     this.P1res = "";
     this.P2res = "";
 
+    //unused variables
     this.player1Name = player1Name;
     this.player2Name = player2Name;
 };
@@ -12,6 +13,8 @@ var TennisGame2 = function(player1Name, player2Name) {
 TennisGame2.prototype.getScore = function() {
     var score = "";
 
+    //tons of duplicated code
+    //use of hard coded
     if (this.P1point === this.P2point && this.P1point < 3) {
         if (this.P1point === 0)
             score = "Love";
@@ -87,6 +90,7 @@ TennisGame2.prototype.getScore = function() {
     return score;
 };
 
+//unused methods
 TennisGame2.prototype.SetP1Score = function(number) {
     var i;
     for (i = 0; i < number; i++) {

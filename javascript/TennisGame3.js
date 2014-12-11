@@ -1,4 +1,5 @@
 var TennisGame3 = function(p1N, p2N) {
+    //bad names
     this.p2 = 0;
     this.p1 = 0;
 
@@ -8,6 +9,7 @@ var TennisGame3 = function(p1N, p2N) {
 
 TennisGame3.prototype.getScore = function() {
     var s;
+    //complex logic
     if ((this.p1 < 4 && this.p2 < 4) && (this.p1 + this.p2 < 6)) {
         var p = ["Love", "Fifteen", "Thirty", "Forty"];
         s = p[this.p1];
