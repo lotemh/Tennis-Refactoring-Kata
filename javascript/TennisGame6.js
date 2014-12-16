@@ -53,11 +53,11 @@ var Rules = function(players) {
         return "Deuce";
     };
 
-    function isSomePlayerAboveWinningBound() {
+    var isSomePlayerAboveWinningBound = function() {
         return players.some(function (p) {
             return p.getScore() >= winFromScore
         });
-    }
+    };
 
     var isLowScore = function () {
         return !isTie() && !isSomePlayerAboveWinningBound();
@@ -93,10 +93,21 @@ var Rules = function(players) {
         return !isTie() && isSomePlayerAboveWinningBound() && isWinningDifference();
     };
 
-    var rules = [new Rule(isHighTie, getHighTieScore),
+    var isSugar = function(){
+        var score = players[0].getScore();
+        return isTie() && (score >= 10) && (score <= 13);
+    };
+
+    var getSugarScore = function(){
+      return "Sugar";
+    };
+
+    var rules = [
+        new Rule(isSugar, getSugarScore),
+        new Rule(isHighTie, getHighTieScore),
+        new Rule(isTie, getLowTieScore),
         new Rule(isAdvantage, getAdvantageScore),
         new Rule(isLowScore, getLowScore),
-        new Rule(isTie, getLowTieScore),
         new Rule(isWinner, getWinScore)
     ];
 
