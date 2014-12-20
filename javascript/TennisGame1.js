@@ -5,14 +5,14 @@ var TennisGame1 = function(player1Name, player2Name) {
     this.player2Name = player2Name;
 };
 
-TennisGame1.prototype.wonPoint = function(playerName) {
+TennisGame1.prototype.wonPoint = function (playerName) {
     if (playerName === "player1")
         this.m_score1 += 1;
     else
         this.m_score2 += 1;
 };
 
-TennisGame1.prototype.getScore = function() {
+TennisGame1.prototype.getScore = function () {
     var score = "";
     var tempScore = 0;
     if (this.m_score1 === this.m_score2) {
@@ -43,23 +43,23 @@ TennisGame1.prototype.getScore = function() {
                 score += "-";
                 tempScore = this.m_score2;
             }
-            switch (tempScore) {
-                case 0:
-                    score += "Love";
-                    break;
-                case 1:
-                    score += "Fifteen";
-                    break;
-                case 2:
-                    score += "Thirty";
-                    break;
-                case 3:
-                    score += "Forty";
-                    break;
-            }
+            score += convertScoreToPhrase(tempScore);
         }
     }
     return score;
+};
+
+convertScoreToPhrase = function (score) {
+    switch (score) {
+        case 0:
+            return "Love";
+        case 1:
+            return "Fifteen";
+        case 2:
+            return "Thirty";
+        case 3:
+            return "Forty";
+    }
 };
 
 if (typeof window === "undefined") {
