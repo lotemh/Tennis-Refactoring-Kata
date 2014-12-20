@@ -16,20 +16,8 @@ TennisGame1.prototype.getScore = function () {
     var score = "";
     var tempScore = 0;
     if (this.m_score1 === this.m_score2) {
-        switch (this.m_score1) {
-            case 0:
-                score = "Love-All";
-                break;
-            case 1:
-                score = "Fifteen-All";
-                break;
-            case 2:
-                score = "Thirty-All";
-                break;
-            default:
-                score = "Deuce";
-                break;
-        }
+        var convertedScore = convertScoreToPhrase(this.m_score1);
+        score += convertedScore && convertedScore != "Forty" ? convertedScore + "-All" : "Deuce";
     } else if (this.m_score1 >= 4 || this.m_score2 >= 4) {
         var minusResult = this.m_score1 - this.m_score2;
         if (minusResult === 1) score = "Advantage player1";
