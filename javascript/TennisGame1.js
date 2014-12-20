@@ -15,9 +15,6 @@ TennisGame1.prototype.wonPoint = function (playerName) {
 
 TennisGame1.prototype.getScore = function () {
     var score = "";
-    var scoreSubtraction = this.m_score1 - this.m_score2;
-
-
     if (this.m_score1 === this.m_score2) {
         var convertedScore = convertScoreToPhrase(this.m_score1);
         score += convertedScore && convertedScore != "Forty" ? convertedScore + "-All" : "Deuce";
