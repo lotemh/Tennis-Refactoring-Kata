@@ -1,26 +1,26 @@
 var TennisGame1 = function(player1Name, player2Name) {
-    this.m_score1 = 0;
-    this.m_score2 = 0;
+    this.playerOneScore = 0;
+    this.playerTwoScore = 0;
 
-    this.player1Name = player1Name;
-    this.player2Name = player2Name;
+    this.playerOneName = player1Name;
+    this.playerTwoName = player2Name;
 };
 
 TennisGame1.prototype.wonPoint = function (playerName) {
-    return playerName === this.player1Name ? this.m_score1++ : this.m_score2++;
+    return playerName === this.playerOneName ? this.playerOneScore++ : this.playerTwoScore++;
 };
 
 TennisGame1.prototype.getScore = function () {
     var score = "";
-    if (this.m_score1 === this.m_score2) {
-        var convertedScore = convertScoreToPhrase(this.m_score1);
+    if (this.playerOneScore === this.playerTwoScore) {
+        var convertedScore = convertScoreToPhrase(this.playerOneScore);
         score += convertedScore && convertedScore != "Forty" ? convertedScore + "-All" : "Deuce";
-    } else if (this.m_score1 >= 4 || this.m_score2 >= 4) {
-        var minusResult = this.m_score1 - this.m_score2;
-        var leadingPlayerName = (minusResult > 0) ? this.player1Name : this.player2Name;
+    } else if (this.playerOneScore >= 4 || this.playerTwoScore >= 4) {
+        var minusResult = this.playerOneScore - this.playerTwoScore;
+        var leadingPlayerName = (minusResult > 0) ? this.playerOneName : this.playerTwoName;
         score = minusResult * minusResult === 1 ? "Advantage " + leadingPlayerName : "Win for " + leadingPlayerName;
     } else {
-        score = convertScoreToPhrase(this.m_score1) + "-" + convertScoreToPhrase(this.m_score2);
+        score = convertScoreToPhrase(this.playerOneScore) + "-" + convertScoreToPhrase(this.playerTwoScore);
     }
     return score;
 };
