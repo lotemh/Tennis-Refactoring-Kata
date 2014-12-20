@@ -25,14 +25,7 @@ TennisGame1.prototype.getScore = function () {
         else if (minusResult >= 2) score = "Win for player1";
         else score = "Win for player2";
     } else {
-        for (var i = 1; i < 3; i++) {
-            if (i === 1) tempScore = this.m_score1;
-            else {
-                score += "-";
-                tempScore = this.m_score2;
-            }
-            score += convertScoreToPhrase(tempScore);
-        }
+        score = convertScoreToPhrase(this.m_score1) + "-" + convertScoreToPhrase(this.m_score2);
     }
     return score;
 };
