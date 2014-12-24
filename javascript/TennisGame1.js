@@ -10,9 +10,7 @@ var Score = function() {
 	};
 	
 	this.increase = function() {
-		if (this.score <= 3) {
-			this.score++;
-		}
+		this.score++;
 	};
 	
 	this.getTieText = function(n) {
@@ -22,12 +20,10 @@ var Score = function() {
 		};
 	};
 	
-	this.getWinText = function() {
-	};
-	
 };
 
 var PlayerInfo = function(name) {
+	
 	this.name = name;
 	this.score = new Score();
 	
@@ -36,21 +32,22 @@ var PlayerInfo = function(name) {
 	};
 	
 	this.isWin = function(other) {
-		return this.score.score >= 4 && Math.abs(this.score.score - other.score.score) >= 2;
+		return this.score.score >= 4 && (this.score.score - other.score.score >= 2);
 	};
 };
 
 var calculateScore = function(player1, player2) {
+	
 	if (player1.isTie(player2)) {
 		return player1.score.getTieText(player1.score.score);
 	} 
 	
-	if (player1.isWin(other)) {
-		return player1.score.getWinText();
+	if (player1.isWin(player2)) {
+		return "Win for " + player1.name;
 	}
 	
-	if (player2.isWin(this)) {
-		return player2.score.getWinText();
+	if (player2.isWin(player1)) {
+		return "Win for " + player2.name;
 	}
 	
 	return "zubi";
