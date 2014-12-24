@@ -5,10 +5,12 @@ var TennisGame2 = function(player1Name, player2Name) {
     this.P1res = "";
     this.P2res = "";
 
+    // unused variables
     this.player1Name = player1Name;
     this.player2Name = player2Name;
 };
 
+// too many if clauses, every case got its' own if clause
 TennisGame2.prototype.getScore = function() {
     var score = "";
 
@@ -87,6 +89,7 @@ TennisGame2.prototype.getScore = function() {
     return score;
 };
 
+// unused
 TennisGame2.prototype.SetP1Score = function(number) {
     var i;
     for (i = 0; i < number; i++) {
@@ -94,6 +97,7 @@ TennisGame2.prototype.SetP1Score = function(number) {
     }
 };
 
+// unused
 TennisGame2.prototype.SetP2Score = function(number) {
     var i;
     for (i = 0; i < number; i++) {
