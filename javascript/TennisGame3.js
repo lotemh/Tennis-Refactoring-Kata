@@ -6,6 +6,7 @@ var TennisGame3 = function(p1N, p2N) {
     this.p2N = p2N;
 };
 
+// short code but hard to understand. bad variable names etc..
 TennisGame3.prototype.getScore = function() {
     var s;
     if ((this.p1 < 4 && this.p2 < 4) && (this.p1 + this.p2 < 6)) {
