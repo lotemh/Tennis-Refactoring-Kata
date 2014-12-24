@@ -5,20 +5,16 @@ var Score = function() {
 	this.score = 0;
 	this.scoreArray = ["Love", "Fifteen", "Thirty", "Forty"];
 	
+	this.equals = function(other) {
+		return this.score === other.score;
+	};
+	
 	this.increase = function() {
 		if (this.score <= 3) {
 			this.score++;
 		}
 	};
 	
-	this.isTie = function(other) {
-		return this.score === other.score;
-	};
-	
-	this.isWin = function(other) {
-		return this.score >= 4 && Math.abs(this.score - other.score) >= 2;
-	};
-
 	this.getTieText = function(n) {
 		switch (n) {
 			case 0: case 1: case 2: return this.scoreArray[n] + "-All";
@@ -26,13 +22,7 @@ var Score = function() {
 		};
 	};
 	
-	this.getScoreText = function(other) {
-		if (this.isTie(other)) {
-			return this.getTieText(this.score);
-		} 
-		
-		
-		return "zubi";
+	this.getWinText = function() {
 	};
 	
 };
@@ -40,10 +30,30 @@ var Score = function() {
 var PlayerInfo = function(name) {
 	this.name = name;
 	this.score = new Score();
+	
+	this.isTie = function(other) {
+		return this.score.equals(other.score);
+	};
+	
+	this.isWin = function(other) {
+		return this.score.score >= 4 && Math.abs(this.score.score - other.score.score) >= 2;
+	};
 };
 
 var calculateScore = function(player1, player2) {
-	return player1.score.getScoreText(player2.score);
+	if (player1.isTie(player2)) {
+		return player1.score.getTieText(player1.score.score);
+	} 
+	
+	if (player1.isWin(other)) {
+		return player1.score.getWinText();
+	}
+	
+	if (player2.isWin(this)) {
+		return player2.score.getWinText();
+	}
+	
+	return "zubi";
 };
 
 var TennisGame1 = function(player1Name, player2Name) {
