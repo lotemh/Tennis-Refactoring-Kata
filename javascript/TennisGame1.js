@@ -31,6 +31,10 @@ var PlayerInfo = function(name) {
 		return this.score.equals(other.score);
 	};
 	
+	this.isAdv = function(other) {
+		return this.score.score - other.score.score === 1;
+	};
+	
 	this.isWin = function(other) {
 		return this.score.score >= 4 && (this.score.score - other.score.score >= 2);
 	};
@@ -40,7 +44,15 @@ var calculateScore = function(player1, player2) {
 	
 	if (player1.isTie(player2)) {
 		return player1.score.getTieText(player1.score.score);
-	} 
+	}
+
+	if (player1.isAdv(player2)) {
+		return "Advantage " + player1.name;
+	}
+	
+	if (player2.isAdv(player1)) {
+		return "Advantage " + player2.name;
+	}
 	
 	if (player1.isWin(player2)) {
 		return "Win for " + player1.name;
