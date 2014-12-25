@@ -1,15 +1,15 @@
 var TennisGame5 = (function(){
     'use strict';
 
-    var p1;
-    var p2;
+    var player1;
+    var player2;
 
     var getPlayerByName = function(playerName) {
-        return (playerName === p1.getName()) ? p1 : p2;
+        return (playerName === player1.getName()) ? player1 : player2;
     };
 
     var getPlayer = function(index) {
-        return (index === 1) ? p1 : p2;
+        return (index === 1) ? player1 : player2;
     };
 
     var Game = function(){};
@@ -41,8 +41,8 @@ var TennisGame5 = (function(){
     };
 
     return function (player1Name, player2Name) {
-        p1 = new Player(player1Name);
-        p2 = new Player(player2Name);
+        player1 = new Player(player1Name);
+        player2 = new Player(player2Name);
 
         return new Game();
     };
