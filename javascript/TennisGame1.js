@@ -59,9 +59,8 @@ var TennisGame1 = (function() {
         return score;
 		
     };
-	    return function (player1Name, player2Name) {
-		return new TennisGame(player1Name, player2Name);
-    };
+	 
+		return TennisGame;
 })();
 if (typeof window === "undefined") {
     module.exports = TennisGame1;
