@@ -9,7 +9,7 @@ var TennisGame2 = function(player1Name, player2Name) {
     this.player2Name = player2Name;
 };
 
-TennisGame2.prototype.getScore = function() {
+TennisGame2.prototype.getScore = function() { // This is crazy
     var score = "";
 
     if (this.P1point === this.P2point && this.P1point < 3) {
@@ -86,6 +86,8 @@ TennisGame2.prototype.getScore = function() {
     }
     return score;
 };
+
+// A lot of duplication...
 
 TennisGame2.prototype.SetP1Score = function(number) {
     var i;
