@@ -1,3 +1,11 @@
+//General Comments:
+//-----------------
+//1. Bad states handling, too many ifs and states
+//2. No use of if/else - only if (redundent checks)
+//3. Repeating score strings tons of times instead of holding them in an array
+//4. Short and not descriptive variable names
+//5. Duplicating code!!!
+
 var TennisGame2 = function(player1Name, player2Name) {
     this.P1point = 0;
     this.P2point = 0;
@@ -101,6 +109,10 @@ TennisGame2.prototype.SetP2Score = function(number) {
     }
 };
 
+//Comments on P1Score and P1Score
+//-------------
+//6. The name of the methods is not describing what's performed in it
+//7. The methods are actually unnecessary, this one action can be done without a method 
 TennisGame2.prototype.P1Score = function() {
     this.P1point++;
 };

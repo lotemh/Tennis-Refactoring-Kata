@@ -1,3 +1,10 @@
+//General Comments:
+//-----------------
+//1. Short and not descriptive variable names
+//2. Storing score names array in the method and not in the object
+//3. ONE method to do all the score computing (getScore), no methods
+//3.* All the above makes this method (which is actually the whole code)
+//    to look messy and not clear.
 var TennisGame3 = function(p1N, p2N) {
     this.p2 = 0;
     this.p1 = 0;
