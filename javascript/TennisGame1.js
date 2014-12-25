@@ -19,7 +19,7 @@ var Score = function() {
 		}
 	};
 	
-	this.getTieText = function() {
+	this.getTieScoreText = function() {
 		if (this.score >= 0 && this.score <= 2) {
 			return this.scoreArray[this.score] + "-All"; 
 		} else {
@@ -50,7 +50,7 @@ var PlayerInfo = function(name) {
 var calculateScore = function(player1, player2) {
 	
 	if (player1.isTie(player2)) {
-		return player1.score.getTieText();
+		return player1.score.getTieScoreText();
 	}
 
 	if (player1.isAdv(player2)) {
