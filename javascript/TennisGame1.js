@@ -13,11 +13,18 @@ var Score = function() {
 		this.score++;
 	};
 	
-	this.getTieText = function(n) {
-		switch (n) {
-			case 0: case 1: case 2: return this.scoreArray[n] + "-All";
-			default: return "Deuce";
-		};
+	this.getScoreText = function() {
+		if (this.score >= 0 && this.score <= 4) {
+			return this.scoreArray[this.score];
+		}
+	};
+	
+	this.getTieText = function() {
+		if (this.score >= 0 && this.score <= 2) {
+			return this.scoreArray[this.score] + "-All"; 
+		} else {
+			return "Deuce";
+		}
 	};
 	
 };
@@ -32,7 +39,7 @@ var PlayerInfo = function(name) {
 	};
 	
 	this.isAdv = function(other) {
-		return this.score.score - other.score.score === 1;
+		return this.score.score >= 4 && (this.score.score - other.score.score === 1);
 	};
 	
 	this.isWin = function(other) {
@@ -43,7 +50,7 @@ var PlayerInfo = function(name) {
 var calculateScore = function(player1, player2) {
 	
 	if (player1.isTie(player2)) {
-		return player1.score.getTieText(player1.score.score);
+		return player1.score.getTieText();
 	}
 
 	if (player1.isAdv(player2)) {
@@ -62,7 +69,7 @@ var calculateScore = function(player1, player2) {
 		return "Win for " + player2.name;
 	}
 	
-	return "zubi";
+	return player1.score.getScoreText() + "-" + player2.score.getScoreText();
 };
 
 var TennisGame1 = function(player1Name, player2Name) {
