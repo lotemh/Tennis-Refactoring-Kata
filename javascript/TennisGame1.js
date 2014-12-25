@@ -1,66 +1,64 @@
-var TennisGame1 = function(player1Name, player2Name) {
-    this.m_score1 = 0;
-    this.m_score2 = 0;
-    this.player1Name = player1Name;
-    this.player2Name = player2Name;
-};
-
-TennisGame1.prototype.wonPoint = function(playerName) {
-    if (playerName === "player1")
-        this.m_score1 += 1;
-    else
-        this.m_score2 += 1;
-};
-
-TennisGame1.prototype.getScore = function() {
-    var score = "";
-    var tempScore = 0;
-    if (this.m_score1 === this.m_score2) {
-        switch (this.m_score1) {
-            case 0:
-                score = "Love-All";
-                break;
-            case 1:
-                score = "Fifteen-All";
-                break;
-            case 2:
-                score = "Thirty-All";
-                break;
-            default:
-                score = "Deuce";
-                break;
-        }
-    } else if (this.m_score1 >= 4 || this.m_score2 >= 4) {
-        var minusResult = this.m_score1 - this.m_score2;
-        if (minusResult === 1) score = "Advantage player1";
-        else if (minusResult === -1) score = "Advantage player2";
-        else if (minusResult >= 2) score = "Win for player1";
-        else score = "Win for player2";
-    } else {
-        for (var i = 1; i < 3; i++) {
-            if (i === 1) tempScore = this.m_score1;
-            else {
-                score += "-";
-                tempScore = this.m_score2;
-            }
-            switch (tempScore) {
-                case 0:
-                    score += "Love";
-                    break;
-                case 1:
-                    score += "Fifteen";
-                    break;
-                case 2:
-                    score += "Thirty";
-                    break;
-                case 3:
-                    score += "Forty";
-                    break;
-            }
-        }
+	// defines player
+	function Player(pName) {
+        this.name = pName;
+        this.score = 0;
     }
-    return score;
-};
+	
+	// player getters and methods to prototype
+	Player.prototype.getName = function () {
+        return this.name;
+    };
+    Player.prototype.getPoints = function () {
+        return this.score;
+    };
+    Player.prototype.addPoint = function () {
+        this.score++;
+    };
+	
+	
+	// defines tennis game
+	
+    var TennisGame1 = function (player1Name, player2Name) {
+        this.player1 = new Player(player1Name);
+        this.player2 = new Player(player2Name);
+		this.scoreNames = ["Love", "Fifteen", "Thirty", "Forty"];
+
+    };
+	
+	TennisGame1.prototype.getPlayerByName = function(name) {
+        return (name === this.player1.getName()) ? this.player1 : this.player2;
+    };
+
+    TennisGame1.prototype.wonPoint = function (name) {
+        this.getPlayerByName(name).addPoint();
+    };
+	
+	TennisGame1.prototype.calcAdvantage = function() {
+            var scorePrefix = (Math.abs(this.player1score - this.player2score) === 1) ? "Advantage" : "Win for";
+            var winner = (this.player1score > this.player2score) ? this.player1 : this.player2;
+			console.log(this.player1score , this.player2score);
+			
+			var winnerName = winner.getName();
+            return scorePrefix + " " + winnerName;
+        }
+	
+    TennisGame1.prototype.getScore = function () {
+        this.player1score = this.player1.getPoints();
+        this.player2score = this.player2.getPoints();
+
+			// tie case
+        if (this.player1score === this.player2score) {
+            score = (this.player1score <= 2) ? (this.scoreNames[this.player1score] + "-All") : "Deuce";
+			// more then 4 point case
+        } else if (this.player1score >= 4 || this.player2score >= 4) {
+            score = this.calcAdvantage();
+			// lower then 4 case
+        } else {
+            score = this.scoreNames[this.player1score] + "-" + this.scoreNames[this.player2score];
+        }
+        return score;
+    };
+
 
 if (typeof window === "undefined") {
     module.exports = TennisGame1;

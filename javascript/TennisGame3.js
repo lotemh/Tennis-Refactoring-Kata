@@ -1,11 +1,15 @@
+// prototype
+// use strict
+
 var TennisGame3 = function(p1N, p2N) {
+// use better names
     this.p2 = 0;
     this.p1 = 0;
-
+// need getters
     this.p1N = p1N;
     this.p2N = p2N;
 };
-
+// increase encapsulation - define a player
 TennisGame3.prototype.getScore = function() {
     var s;
     if ((this.p1 < 4 && this.p2 < 4) && (this.p1 + this.p2 < 6)) {
