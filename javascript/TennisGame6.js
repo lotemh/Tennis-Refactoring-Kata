@@ -26,7 +26,9 @@ var TennisGame6 = (function(){
     }
 })();
 
-var Rules = function(players) {
+var Rules = (function() {
+
+    var players;
 
     const winFromScore = 4;
     const highTieLowBound = 4;
@@ -60,7 +62,7 @@ var Rules = function(players) {
     };
 
     var isLowScore = function () {
-        return !isTie() && !isSomePlayerAboveWinningBound();
+        return !isSomePlayerAboveWinningBound();
     };
 
     var getLowScore = function () {
@@ -72,7 +74,7 @@ var Rules = function(players) {
     }
 
     var isAdvantage = function () {
-        return !isTie() && isSomePlayerAboveWinningBound() && !isWinningDifference();
+        return isSomePlayerAboveWinningBound() && !isWinningDifference();
     };
 
     var getAdvantageScore = function () {
@@ -90,7 +92,7 @@ var Rules = function(players) {
     };
 
     var isWinner = function () {
-        return !isTie() && isSomePlayerAboveWinningBound() && isWinningDifference();
+        return isSomePlayerAboveWinningBound() && isWinningDifference();
     };
 
     var isSugar = function(){
@@ -117,15 +119,20 @@ var Rules = function(players) {
         }
     }
 
-    return {
-        getScore: getScore
+    function Rule(isTrue, getScore){
+        this.isTrue = isTrue;
+        this.getScore = getScore;
     }
-};
 
-function Rule(isTrue, getScore){
-    this.isTrue = isTrue;
-    this.getScore = getScore;
-}
+    return function(playersInput){
+        players = playersInput;
+
+        return {
+            getScore: getScore
+        }
+    }
+
+})();
 
 function Player(name){
     this.name = name;
