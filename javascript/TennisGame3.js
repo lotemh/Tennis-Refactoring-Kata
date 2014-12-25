@@ -6,7 +6,7 @@ var TennisGame3 = function(p1N, p2N) {
     this.p2N = p2N;
 };
 
-TennisGame3.prototype.getScore = function() {
+TennisGame3.prototype.getScore = function() { // Very short, but very difficult to maintain & change...
     var s;
     if ((this.p1 < 4 && this.p2 < 4) && (this.p1 + this.p2 < 6)) {
         var p = ["Love", "Fifteen", "Thirty", "Forty"];
