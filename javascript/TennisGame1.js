@@ -29,7 +29,7 @@ var Score = function() {
 	
 };
 
-var PlayerInfo = function(name) {
+var Player = function(name) {
 	
 	this.name = name;
 	this.score = new Score();
@@ -73,8 +73,8 @@ var calculateScore = function(player1, player2) {
 };
 
 var TennisGame1 = function(player1Name, player2Name) {
-	this.player1 = new PlayerInfo(player1Name);
-	this.player2 = new PlayerInfo(player2Name);
+	this.player1 = new Player(player1Name);
+	this.player2 = new Player(player2Name);
 };
 
 TennisGame1.prototype.wonPoint = function(playerName) {
